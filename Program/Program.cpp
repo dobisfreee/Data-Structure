@@ -24,6 +24,18 @@ public:
         head = nullptr;
     }
 
+    void Show()
+    {
+        Node* currentNode = head;
+        while (currentNode != nullptr)
+        {
+            cout << currentNode->data << " ";
+            currentNode = currentNode->next;
+
+        }
+
+    }
+
     void PushFront(T data)
     {
         if (head == nullptr)
@@ -44,16 +56,80 @@ public:
 
         size++;
     }
-    void Show()
+
+    void PopFront()
     {
-        Node* currentNode = head;
-        while (currentNode != nullptr)
+        if (head == nullptr)
         {
-            cout << currentNode->data << " ";
-            currentNode = currentNode->next;
-
+            cout << "Linked List is empty" << endl; 
         }
+        else 
+        {
+            Node* deleteNode = head;
+            head = deleteNode->next;
+            delete deleteNode;
+            size--;
+        }
+    }
 
+    void PushBack(T data)
+    {
+        if (head == nullptr)
+        {
+            head = new Node;
+
+            head->data = data;
+            head->next = nullptr; 
+        }
+        else
+        {
+            Node* currentNode = head;
+
+            while (currentNode->next != nullptr)
+            {
+               currentNode = currentNode->next;
+            }
+
+            Node* newNode = new Node;
+            currentNode->next = newNode;
+            newNode->data = data;
+            newNode->next = nullptr;
+        }
+       
+        size++;
+    }
+
+    void PopBack()
+    {
+        if (head == nullptr)
+        {
+            cout << "Linked List is empty" << endl;
+        }
+        else
+        {
+            Node* deleteNode = head;
+            Node* previousNode = nullptr;
+            if (size == 1)
+            {
+
+                head = deleteNode->next;
+                delete deleteNode;
+
+            }
+            else
+            {
+                
+                while (deleteNode->next != nullptr)
+                {
+                    previousNode = deleteNode;
+                    deleteNode = deleteNode->next;
+                }
+                previousNode->next = deleteNode->next;
+                delete deleteNode;
+
+            }
+            size--;
+        }
     }
 };
 
@@ -61,10 +137,20 @@ public:
 int main()
 {
     SingleLInkedList<int> singleLinkedList;
-    singleLinkedList.PushFront(10);
-    singleLinkedList.PushFront(20);
+
+    singleLinkedList.PushBack(10);
+    singleLinkedList.PushBack(20);
+    singleLinkedList.PushBack(30);
+ 
+    singleLinkedList.PopBack();
+   
     singleLinkedList.Show();
 
+
+
+    
+  
+   
     return 0;
 }
 

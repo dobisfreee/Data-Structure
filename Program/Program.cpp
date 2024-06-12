@@ -3,155 +3,133 @@
 using namespace std;
 
 template<typename T>
-class SingleLInkedList
+class DoublyLinkedList
 {
 private:
-    int size;
+	int size;
 
-    struct Node
-    {
-        T data;
-        Node* next;
-    };
+	struct Node
+	{
+		T data;
+		Node* next;
+		Node* previous;
+	};
 
-    Node* head;
-
+	Node* head;
+	Node* tail;
 
 public:
-    SingleLInkedList()
-    {
-        size = 0;
-        head = nullptr;
-    }
+	DoublyLinkedList()
+	{
+		size = 0;
+		head = nullptr;
+		tail = nullptr;
+	}
 
-    void Show()
-    {
-        Node* currentNode = head;
-        while (currentNode != nullptr)
-        {
-            cout << currentNode->data << " ";
-            currentNode = currentNode->next;
+	void Show()
+	{
+		Node* currentNode = head;
+		while (currentNode != nullptr)
+		{
+			cout << currentNode->data << " ";
+			currentNode = currentNode->next;
+		}
+		cout << "Size : " << size << endl;
+	}
 
-        }
+	void PushBack(T data)
+	{
+		Node* newNode = new Node;
 
-    }
+		newNode->data = data; 
+		newNode->next = nullptr;
+		newNode->previous = nullptr;
 
-    void PushFront(T data)
-    {
-        if (head == nullptr)
-        {
-            head = new Node;
+		if (size == 0)
+		{ 
+			tail = newNode;
+			head = tail; 
+		}
+		else
+		{
+			tail->next = newNode;
+			newNode->previous = tail;
 
-            head->data = data;
-            head->next = nullptr;
-        }
-        else
-        {
-            Node* newNode = new Node;
-            newNode->next = head;
-            newNode->data = data;
+			tail = newNode; 
+		
+		}
+		size++;
+	}
 
-            head = newNode;
-        }
+	void PopBack()
+	{
+		if (tail == nullptr)
+		{
+			cout << "Linked List is empty" << endl;
+		}
+		else 
+		{
+			Node* deleteNode;
 
-        size++;
-    }
+			deleteNode = tail;
+			if (head == tail)
+			{
+				head = nullptr;
+				tail = nullptr;		
 
-    void PopFront()
-    {
-        if (head == nullptr)
-        {
-            cout << "Linked List is empty" << endl; 
-        }
-        else 
-        {
-            Node* deleteNode = head;
-            head = deleteNode->next;
-            delete deleteNode;
-            size--;
-        }
-    }
+				delete deleteNode;
+			}
+			else
+			{				
+				tail->previous->next = nullptr; 
+			
+				tail = tail->previous;
 
-    void PushBack(T data)
-    {
-        if (head == nullptr)
-        {
-            head = new Node;
+				delete deleteNode;
+						
+			}
+			
+			size--;
+		}
+	}
 
-            head->data = data;
-            head->next = nullptr; 
-        }
-        else
-        {
-            Node* currentNode = head;
+	void PushFront(T data)
+	{
+		Node* newNode = new Node;
 
-            while (currentNode->next != nullptr)
-            {
-               currentNode = currentNode->next;
-            }
+		newNode->data = data;
 
-            Node* newNode = new Node;
-            currentNode->next = newNode;
-            newNode->data = data;
-            newNode->next = nullptr;
-        }
-       
-        size++;
-    }
+		newNode->next = nullptr;
 
-    void PopBack()
-    {
-        if (head == nullptr)
-        {
-            cout << "Linked List is empty" << endl;
-        }
-        else
-        {
-            Node* deleteNode = head;
-            Node* previousNode = nullptr;
-            if (size == 1)
-            {
+		newNode->previous = nullptr;
 
-                head = deleteNode->next;
-                delete deleteNode;
 
-            }
-            else
-            {
-                
-                while (deleteNode->next != nullptr)
-                {
-                    previousNode = deleteNode;
-                    deleteNode = deleteNode->next;
-                }
-                previousNode->next = deleteNode->next;
-                delete deleteNode;
+		if (head == nullptr)
+		{
+			head = newNode;
+			tail = newNode;
+		}
+		else
+		{
+			head->previous = newNode;
+			newNode->next = head; 
 
-            }
-            size--;
-        }
-    }
+			head = newNode;
+		}
+		size++;
+	}
+
 };
-
 
 int main()
 {
-    SingleLInkedList<int> singleLinkedList;
+	DoublyLinkedList<int> doublylinkedlist;
 
-    singleLinkedList.PushBack(10);
-    singleLinkedList.PushBack(20);
-    singleLinkedList.PushBack(30);
- 
-    singleLinkedList.PopBack();
-   
-    singleLinkedList.Show();
+	doublylinkedlist.PushFront(10);
+	doublylinkedlist.PushFront(20);
+	doublylinkedlist.PushFront(30);
+	doublylinkedlist.Show();
+	
 
-
-
-    
-  
-   
-    return 0;
+	return 0;
 }
-
-

@@ -1,37 +1,65 @@
 ﻿#include <iostream>
 
-#define SIZE 10
-
 using namespace std;
 
+#define SIZE 5
+
 template <typename T>
-class Stack
+class CircularQueue
 {
 private:
-	int top;
+
+	int size;
+	int rear;
+	int front;
 
 	T container[SIZE];
 
-
 public:
-	Stack()
+
+	CircularQueue()
 	{
-		top = -1;
+		size = 0;
+		rear = SIZE - 1;	
+		front = SIZE - 1;
 
 		for (int i = 0; i < SIZE; i++)
 		{
-			container[i] = 0;
+			container[i] = NULL;
 		}
-
 	}
-	int& Size()
-	{	
-		return top++;
+
+	void Push(T data)
+	{
+		if (rear + 1 == front)
+		{
+			cout << "Queue Overflow" << endl;
+		}
+		else
+		{
+			rear = (rear + 1) % SIZE;
+			container[rear] = data;
+			size++;
+		}
+	}
+
+	void Pop()
+	{
+		if (Empty())
+		{
+			cout << "Linear Queue is Empty" << endl;
+		}
+		else
+		{
+			front = (front + 1) % SIZE;
+			container[front] = NULL;
+			size--;
+		}
 	}
 
 	bool Empty()
 	{
-		if (top <= -1)
+		if (rear == front)
 		{
 			return true;
 		}
@@ -41,68 +69,58 @@ public:
 		}
 	}
 
-	void Push(T data)
-	{
-		if (top >= SIZE-1)
-		{
-			cout << "Stack Overflow" << endl;
-		}
-		else
-		{	
-			container[++top] = data; 
-		}
-	}
-	void Pop()
+	T& Front()
 	{
 		if (Empty())
 		{
-			cout << "Stack is Empty" << endl;
+			exit(1);
 		}
 		else
 		{
-			top --;
+			return container[(front + 1) % SIZE];
+		}
+
+	}
+
+	T& Back()
+	{
+		if (Empty())
+		{
+			exit(1);
+		}
+		else
+		{
+			return container[rear];
 		}
 	}
-	T& Top()
+
+	int& Size()
 	{
-		return container[top];
+		return size;
 	}
-	
+
+
+
 };
 
-bool CheckBracket(std::string content)
-{	
-	if (content.length() <= 0)
-	{
-		return false;
-	}
-	else 
-	{
-		Stack<char> stack;
-		for (int i = 0; i < content.length() / 2; i++)
-		{
-			stack.Push(content[i]);
-		}
-		for (int j = content.length() / 2; j < content.length(); j++)
-		{
-			if (stack.Top() == content[j])
-			{
-				stack.Pop();
-			}
-			else
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	
-
-}
+using namespace std;
 
 int main()
 {
-	CheckBracket("");
+	CircularQueue<int> circularqueue;
+
+	circularqueue.Push(10);
+	circularqueue.Push(20);
+	circularqueue.Push(30);
+	circularqueue.Push(40);
+	circularqueue.Push(50);
+	
+
+	while (circularqueue.Empty() == false)
+	{
+		cout << circularqueue.Front() << endl;
+		circularqueue.Pop();
+	}
 
 	return 0;
 }

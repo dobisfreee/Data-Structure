@@ -2,95 +2,88 @@
 
 using namespace std;
 
-#define SIZE 5
-
 template <typename T>
-class CircularQueue
+class Vector
 {
 private:
-
 	int size;
-	int rear;
-	int front;
-
-	T container[SIZE];
-
+	int capacity;
+	T* container; 
 public:
 
-	CircularQueue()
+	Vector()
 	{
 		size = 0;
-		rear = SIZE - 1;	
-		front = SIZE - 1;
-
-		for (int i = 0; i < SIZE; i++)
-		{
-			container[i] = NULL;
-		}
+		capacity = 0;
+		container = nullptr;
 	}
 
-	void Push(T data)
+	void Resize(int newSize)
 	{
-		if (rear + 1 == front)
+		capacity = newSize;
+
+		T* newContainer = new T[capacity];
+
+		for (int i = 0; i < capacity; i++)
 		{
-			cout << "Queue Overflow" << endl;
+			newContainer[i] = NULL;
+		}
+
+		for (int j = 0; j < size; j++)
+		{
+			newContainer[j] = container[j];
+		}
+		if (container != nullptr)
+		{
+			delete[] container;
+		}
+		container = newContainer;
+
+	}
+
+	T& operator [] (const int& index)
+	{
+		return container[index];
+	}
+
+	void PushBack(T data)
+	{
+		if (capacity <= 0)
+		{
+			Resize(1);
+		}
+		else if(size >= capacity)
+		{
+			Resize(capacity * 2);
+		}
+
+		container[size++] = data;
+
+	}
+
+	void PopBack()
+	{
+		if (capacity <= 0)
+		{
+			cout << "Vector is Empty" << endl;
 		}
 		else
 		{
-			rear = (rear + 1) % SIZE;
-			container[rear] = data;
-			size++;
-		}
-	}
-
-	void Pop()
-	{
-		if (Empty())
-		{
-			cout << "Linear Queue is Empty" << endl;
-		}
-		else
-		{
-			front = (front + 1) % SIZE;
-			container[front] = NULL;
+			delete container[size-1];
 			size--;
 		}
 	}
 
-	bool Empty()
+	void Reserve(int newSize)
 	{
-		if (rear == front)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		capacity = newSize;
 	}
 
-	T& Front()
+	~Vector()
 	{
-		if (Empty())
+		if (container != nullptr)
 		{
-			exit(1);
-		}
-		else
-		{
-			return container[(front + 1) % SIZE];
-		}
-
-	}
-
-	T& Back()
-	{
-		if (Empty())
-		{
-			exit(1);
-		}
-		else
-		{
-			return container[rear];
+			delete [] container;
 		}
 	}
 
@@ -99,28 +92,20 @@ public:
 		return size;
 	}
 
-
-
 };
-
-using namespace std;
 
 int main()
 {
-	CircularQueue<int> circularqueue;
 
-	circularqueue.Push(10);
-	circularqueue.Push(20);
-	circularqueue.Push(30);
-	circularqueue.Push(40);
-	circularqueue.Push(50);
-	
+	Vector<int> vector;
 
-	while (circularqueue.Empty() == false)
+	vector.PushBack(10);
+	vector.PushBack(20);
+	vector.PushBack(30);
+
+	for (int i = 0; i < vector.Size(); i++)
 	{
-		cout << circularqueue.Front() << endl;
-		circularqueue.Pop();
+		cout << vector[i] << endl;
 	}
-
-	return 0;
+		return 0;
 }

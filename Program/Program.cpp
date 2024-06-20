@@ -2,110 +2,107 @@
 
 using namespace std;
 
-template <typename T>
-class Vector
+class String
 {
 private:
-	int size;
-	int capacity;
-	T* container; 
-public:
+	char * container;
 
-	Vector()
+	int size;
+
+public:
+	String()
 	{
 		size = 0;
-		capacity = 0;
 		container = nullptr;
 	}
 
-	void Resize(int newSize)
+	void operator = (const char * content)
 	{
-		capacity = newSize;
+		int arraySize = strlen(content) + 1; // strlen()은 NULL을 제외한 문자열의 길이이기
+		size = strlen(content);				 // 때문에 +1을 해주어야 한다. 
 
-		T* newContainer = new T[capacity];
-
-		for (int i = 0; i < capacity; i++)
+		if (container == nullptr)
 		{
-			newContainer[i] = NULL;
+			container = new char [arraySize];
+
+			for (int i = 0; i < arraySize; i++)
+			{
+				container[i] = content[i];
+			}
 		}
+		else
+		{
+			char* newContainer = new char[arraySize];
 
-		for (int j = 0; j < size; j++)
-		{
-			newContainer[j] = container[j];
-		}
-		if (container != nullptr)
-		{
+			for (int j = 0; j < arraySize; j++)
+			{
+				newContainer[j] = content[j];
+			}
+
 			delete[] container;
+
+			container = newContainer;
 		}
-		container = newContainer;
+		
 
 	}
 
-	T& operator [] (const int& index)
+	char & operator [] (int index)
 	{
 		return container[index];
 	}
 
-	void PushBack(T data)
-	{
-		if (capacity <= 0)
-		{
-			Resize(1);
-		}
-		else if(size >= capacity)
-		{
-			Resize(capacity * 2);
-		}
-
-		container[size++] = data;
-
+	int& Size()
+	{	
+		return size;
 	}
 
-	void PopBack()
-	{
-		if (capacity <= 0)
+	int Compare(const char * content)
+	{	
+		int arraySize = 0;
+
+		if (strlen(container) > strlen(content))
 		{
-			cout << "Vector is Empty" << endl;
+			arraySize = strlen(container);
+		}
+		else if (strlen(container) < strlen(content))
+		{
+			arraySize = strlen(content);
 		}
 		else
 		{
-			delete container[size-1];
-			size--;
+			arraySize = strlen(container);
 		}
-	}
 
-	void Reserve(int newSize)
-	{
-		capacity = newSize;
-	}
-
-	~Vector()
-	{
-		if (container != nullptr)
+		for (int i = 0; i < arraySize; i++)
 		{
-			delete [] container;
+			if (container[i] > content[i])
+			{
+				return 1;
+			}
+			else if (container[i] < content[i])
+			{
+				return -1;
+			}
 		}
-	}
-
-	int& Size()
-	{
-		return size;
+		return 0;
+		
 	}
 
 };
 
 int main()
 {
+	String string; 
 
-	Vector<int> vector;
+	string = "Ana";
 
-	vector.PushBack(10);
-	vector.PushBack(20);
-	vector.PushBack(30);
+	int flag = string.Compare("Tracer");
 
-	for (int i = 0; i < vector.Size(); i++)
-	{
-		cout << vector[i] << endl;
-	}
-		return 0;
+	cout << flag << endl;
+
+	
+
+
+	return 0;
 }

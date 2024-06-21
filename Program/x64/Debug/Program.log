@@ -1,7 +1,6 @@
 ﻿  Program.cpp
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(21,17): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(22,16): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(66,22): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(70,22): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(74,22): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Program.vcxproj -> C:\Users\USER\Desktop\Data-Structure\Program\x64\Debug\Program.exe
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(32,3): error C3861: 'head': 식별자를 찾을 수 없습니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(42,2): message : 컴파일되는 클래스 템플릿 인스턴스화 'HashTable<KEY,VALUE>'에 대한 참조를 확인하세요.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(38,4): error C3861: 'bucket': 식별자를 찾을 수 없습니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(32,3): error C2065: 'head': 선언되지 않은 식별자입니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(38,4): error C2065: 'bucket': 선언되지 않은 식별자입니다.

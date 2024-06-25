@@ -1,6 +1,6 @@
 ﻿  Program.cpp
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(46,34): error C2988: 템플릿 선언/정의를 인식할 수 없습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(92,2): message : 컴파일되는 클래스 템플릿 인스턴스화 'HashTable<KEY,VALUE>'에 대한 참조를 확인하세요.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(173,2): message : 컴파일되는 클래스 템플릿 인스턴스화 'HashTable<KEY,VALUE>'에 대한 참조를 확인하세요.
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(46,34): error C2143: 구문 오류: ')'이(가) '.' 앞에 없습니다.
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(46,34): error C3484: 구문 오류: 반환 형식 앞에 '->'가 필요합니다.
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(46,35): error C3613: '->' 후 반환 형식이 없습니다('int'로 간주됨).
@@ -11,9 +11,9 @@ C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(50,38): error C2065: 'k
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(52,23): error C2760: 구문 오류: 여기서 '='은(는) 예상치 못한 오류였습니다. 예상된 오류는 '식'였습니다
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(52,23): error C3878: 구문 오류: 예기치 않은 토큰 '='이(가) 'expression' 다음에 있습니다.
 C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(52,23): message : 오류 복구를 건너뛰었습니다. '= 식별자'
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,13): error C3878: 구문 오류: 예기치 않은 토큰 '식별자'이(가) 'expression' 다음에 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,13): message : 오류 복구를 건너뛰었습니다. '식별자 [ 식별자'
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,29): error C2760: 구문 오류: 여기서 ']'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,29): error C3878: 구문 오류: 예기치 않은 토큰 ']'이(가) 'expression_statement' 다음에 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,29): message : 오류 복구를 건너뛰었습니다. '] ->'
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(86,32): error C2065: 'head': 선언되지 않은 식별자입니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,13): error C3878: 구문 오류: 예기치 않은 토큰 '식별자'이(가) 'expression' 다음에 있습니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,13): message : 오류 복구를 건너뛰었습니다. '식별자 [ 식별자'
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,29): error C2760: 구문 오류: 여기서 ']'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,29): error C3878: 구문 오류: 예기치 않은 토큰 ']'이(가) 'expression_statement' 다음에 있습니다.
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,29): message : 오류 복구를 건너뛰었습니다. '] ->'
+C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(85,32): error C2065: 'head': 선언되지 않은 식별자입니다.

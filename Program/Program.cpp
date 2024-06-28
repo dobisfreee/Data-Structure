@@ -2,120 +2,20 @@
 
 using namespace std;
 
-#define SIZE 8
-
-template <typename T>
-class Heap
-{
-private:
-	int index;
-
-	T container[SIZE];
-
-public:
-	Heap()
-	{
-		index = 0;
-
-		for (int i = 0; i < SIZE; i++)
-		{
-			container[i] = NULL;
-		}
-	}
-	void Insert(T data)
-	{
-		if (index >= SIZE)
-		{
-			cout << "Heap Overflow" << endl;
-		}
-		else 
-		{
-			container[++index] = data;
-
-			int child = index;
-			int parent = child / 2;
-
-			int temp = 0;
-
-			while (child > 1)
-			{
-				if (container[parent] < container[child])
-				{
-					std::swap(container[parent], container[child]);
-				}
-
-				child = parent;
-				parent = child / 2;
-
-			}
-		}
-	}
-
-	T Remove()
-	{
-		if (index <= 0)
-		{
-			cout << "Heap is Empty" << endl;
-			exit (1);
-		}
-		
-		
-			T result = container[1];
-	
-			container[1] = container[index];
-
-			container[index] = NULL;
-
-			index--;
-
-			int parent = 1;
-
-			int left = parent * 2;
-
-			int right = parent * 2 + 1;
-
-			while (container[parent] < container[right] || container[parent] < container[left])
-			{
-				if (container[parent] < container[right])
-				{
-					std::swap(container[parent], container[right])
-
-						right = parent;
-					
-						
-				}
-				else if (container[parent] < container[left])
-				{
-					std::swap(container[parent], container[left])
-
-						left = parent;
-						parent = left / 2;
-				}
-
-			}
-
-	}
-
-	void Show()
-	{
-		for (int i = 1; i <= index; i++)
-		{
-			cout << container[i] << " ";
-		}
-	}
-};
-
-
 int main()
 {
-	Heap<int> heap;
+#pragma region  인접 리스트
+	// 그래프의 각 정점에 인접한 정점들을 연결 리스트로 
+	// 표현하는 방법입니다. 
 
-	heap.Insert(6);
-	heap.Insert(7);
-	heap.Insert(2);
-	heap.Insert(10);
+	// 장점
+	// 그래프의 모든 간선의 수를 o(V + E)로 표현할 수 있습니다.
 
-	heap.Show();
+	// 단점
+	// 두 정점을 연결하는 간선을 조회하거나 정점의 차수를 알기 
+	// 위해서 정점의 인접 리스트를 모두 탐색해야 하므로, 
+	// 정점의 차수만큼의 시간이 필요합니다. 
+#pragma endregion
 
 	return 0;
 }

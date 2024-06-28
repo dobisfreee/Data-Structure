@@ -2,11 +2,6 @@
 
 using namespace std;
 
-int main()
-{
-#include <iostream>
-
-    using namespace std;
 
     template<typename T>
     class SingleLInkedList
@@ -149,6 +144,8 @@ int main()
         }
     };
 
+   
+
 
     int main()
     {
@@ -172,4 +169,4 @@ int main()
 
 
 
-}
+

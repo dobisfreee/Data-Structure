@@ -1,23 +1,2 @@
 ﻿  Program.cpp
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(24,11): error C2760: 구문 오류: 여기서 ';'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ']'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(112,2): message : 컴파일되는 클래스 템플릿 인스턴스화 'AdjacencyList<T>'에 대한 참조를 확인하세요.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(24,15): error C2143: 구문 오류: ';'이(가) ']' 앞에 없습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(24,16): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,13): error C2760: 구문 오류: 여기서 ';'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ']'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,17): error C2143: 구문 오류: ';'이(가) ']' 앞에 없습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,18): error C2238: ';' 앞에 예기치 않은 토큰이 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,27): error C2760: 구문 오류: 여기서 ';'은(는) 예상치 못한 오류였습니다. 예상된 오류는 'expression'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,27): error C2760: 구문 오류: 여기서 ';'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ')'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,29): error C2065: 'i': 선언되지 않은 식별자입니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,32): error C2760: 구문 오류: 여기서 ')'은(는) 예상치 못한 오류였습니다. 예상된 오류는 ';'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,32): error C3878: 구문 오류: 예기치 않은 토큰 ')'이(가) 'expression_statement' 다음에 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(33,32): message : 오류 복구를 건너뛰었습니다. ')'
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(35,11): error C2065: 'i': 선언되지 않은 식별자입니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(36,9): error C2065: 'i': 선언되지 않은 식별자입니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(42,7): error C2429: 언어 기능 'if/switch의 init-statements'에 컴파일러 플래그 '/std:c++17'이(가) 필요합니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(42,19): error C2760: 구문 오류: 여기서 ')'은(는) 예상치 못한 오류였습니다. 예상된 오류는 'condition'였습니다
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(24,4): warning C4200: 비표준 확장이 사용됨: 구조체/공용 구조체의 배열 크기가 0입니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(24,4): message : 이 멤버는 기본값으로 설정된 생성자 또는 복사/이동 대입 연산자에서 무시됩니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,8): error C2229: class 'AdjacencyList<char>'에 크기가 0인 잘못된 배열이 있습니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,8): warning C4200: 비표준 확장이 사용됨: 구조체/공용 구조체의 배열 크기가 0입니다.
-C:\Users\USER\Desktop\Data-Structure\Program\Program.cpp(25,8): message : 이 멤버는 기본값으로 설정된 생성자 또는 복사/이동 대입 연산자에서 무시됩니다.
+  Program.vcxproj -> C:\Users\Administrator\Desktop\Data-Structure\Program\x64\Debug\Program.exe

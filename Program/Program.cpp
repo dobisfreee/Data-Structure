@@ -37,91 +37,50 @@ public:
 		return newNode;
 	}
 
-	void Insert(T data) // 작으면 왼쪽, 크면 오른쪽
-	{
-		if (root == nullptr)
-		{
-			root = CreateNode(data);
-		}
-		else
-		{
-			Node* currentNode = root;
-	
-			while (currentNode != nullptr)
-			{
-				if (currentNode->data < data)
-				{
-				if (currentNode->right == nullptr)
-				{
-					currentNode->right = CreateNode(data);
-						break; 
-				}
-				else
-				{
-					currentNode = currentNode->right;
-				}
-	 			}
- 			else if (currentNode->data > data)
- 			{
- 				if (currentNode->left == nullptr)
- 				{
- 					currentNode->left = CreateNode(data);
- 					break;
- 				}
-					else
-					{
-	 					currentNode = currentNode->left;
-	 				}
+	 void Insert(T data) // 작으면 왼쪽, 크면 오른쪽
+	 {
+	 	if (root == nullptr)
+	 	{
+	 		root = CreateNode(data);
+	 	}
+	 	else
+	 	{
+	 		Node* currentNode = root;
+	 
+	 		while (currentNode != nullptr)
+	 		{
+	 			if (currentNode->data < data)
+	 			{
+	 			if (currentNode->right == nullptr)
+	 			{
+	 				currentNode->right = CreateNode(data);
+	 					break; 
 	 			}
 	 			else
 	 			{
-	 				return;
+	 				currentNode = currentNode->right;
 	 			}
-			}
-	 	}
-	 }
+	  			}
+ 	 		else if (currentNode->data > data)
+ 	 		{
+ 	 			if (currentNode->left == nullptr)
+ 	 			{
+ 	 				currentNode->left = CreateNode(data);
+ 	 				break;
+ 	 			}
+	 				else
+	 				{
+	  					currentNode = currentNode->left;
+	  				}
+	  			}
+	  			else
+	  			{
+	  				return;
+	  			}
+	 		}
+	  	}
+	  }
 
-	// void Insert(T data, Node * root)
-	// {
-	// 	if (root == nullptr)
-	// 	{
-	// 		root = CreateNode(data);
-	// 	}
-	// 	else
-	// 	{
-	// 		Node* currentNode = root;
-	// 
-	// 		if (currentNode != nullptr)
-	// 		{
-	// 			if (currentNode->data > data)
-	// 			{
-	// 				if (currentNode->left == nullptr)
-	// 				{
-	// 					currentNode->left = CreateNode(data);
-	// 				}
-	// 				else
-	// 				{
-	// 					Insert(data, root->left);
-	// 				}
-	// 			}
-	// 			else if(currentNode->data < data)
-	// 			{
-	// 				if (currentNode->right == nullptr)
-	// 				{
-	// 					currentNode->right = CreateNode(data);
-	// 				}
-	// 				else
-	// 				{
-	// 					Insert(data, root->left);
-	// 				}
-	// 			}
-	// 			else
-	// 			{
-	// 				return;
-	// 			}
-	// 		}
-	// 	}
-	// }
 
 	bool Find(T data)
 	{
@@ -153,6 +112,7 @@ public:
 			return false;
 		}
 	}
+
 	void Inorder(Node * root)
 	{
 		if (root != nullptr)
@@ -173,6 +133,101 @@ public:
 		}
 	}
 
+	void Remove(T data)
+	{
+		if (root == nullptr)
+		{
+			cout << "BinarySearchTree is Empty" << endl;
+		}
+		else
+		{
+			Node* currentNode = root;
+			Node* parentNode = nullptr;
+
+			while (currentNode != nullptr && currentNode->data != data)
+			{
+				if (currentNode->data > data)
+				{
+					parentNode = currentNode;
+					currentNode = currentNode->left;			
+				}
+				else 
+				{	
+					parentNode = currentNode;
+					currentNode = currentNode->right;	
+				}
+			}
+			if (currentNode == nullptr)
+			{
+				cout << "Data Not Found in the Binary Search Tree" << endl;
+			}
+			else if (currentNode->left == nullptr && currentNode->right == nullptr)
+			{
+				if (parentNode != nullptr)
+				{
+					if (parentNode->left == currentNode)
+					{
+						parentNode->left = nullptr;
+					}
+					else
+					{
+						parentNode->right = nullptr;
+					}
+				}
+				else
+				{
+					root = nullptr;
+				}
+			}
+			else if (currentNode->left != nullptr && currentNode->right != nullptr)
+			{
+				Node* childNode = currentNode->right;
+				Node* traceNode = childNode;
+
+				while (childNode->left != nullptr)
+				{
+					traceNode = childNode;
+					childNode = childNode->left;
+				}
+				
+				currentNode->data = childNode->data;
+
+				traceNode->left = childNode->right;
+
+				delete childNode;
+
+				return;
+			}
+			else  
+			{
+				if (currentNode->left != nullptr)
+				{
+					Node* childNode = currentNode->left;
+				}
+				else (currentNode->right != nullptr)
+				{
+					Node* childNode = currentNode->right;
+				}
+
+				if (parentNode != nullptr)
+				{
+					if (parentNode->left = currentNode )
+					{
+						parentNode->left = childNode;
+					}
+					else 
+					{
+						parentNode->right = childNode;
+					}
+				}
+				
+			}
+
+			delete currentNode;
+			
+		}
+	}
+
 	~BinarySearchTree()
 	{
 		Destroy(root);
@@ -188,7 +243,8 @@ int main()
 	binarySearchTree.Insert(15);
 	binarySearchTree.Insert(5);
 
-	cout << binarySearchTree.Find(2) << endl;
+	binarySearchTree.Remove(7);
+	
 
 	binarySearchTree.Inorder(binarySearchTree.Root());
 
